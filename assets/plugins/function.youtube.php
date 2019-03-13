@@ -47,7 +47,7 @@ function smarty_function_youtube($params, &$smarty)
 
     if(isset($params['playlist'])){
 
-        $vidString.='<iframe width="'.$width.'" height="'. $height .'" src="https://www.youtube.com/embed/?listType=playlist&list=' . $params['playlist'] . '" frameborder="0" allowfullscreen>';
+        $vidString.='<iframe width="'.$width.'" height="'. $height .'" src="https://www.youtube.com/embed/?listType=playlist&list=' . $params['playlist'] . '" frameborder="0" allowfullscreen></iframe>';
 
     }else{
 
