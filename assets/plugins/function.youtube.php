@@ -42,16 +42,22 @@ function smarty_function_youtube($params, &$smarty)
         $width=640;
     }
 
+    if(isset($params['use_cookies']) && $params['use_cookies']){
+        $yt_url='https://www.youtube.com';
+    }else{
+        $yt_url='https://www.youtube-nocookie.com';
+    }
+
 
     $vidString='<div class="millco-yt embed-responsive embed-responsive-16by9">';
 
     if(isset($params['playlist'])){
 
-        $vidString.='<iframe width="'.$width.'" height="'. $height .'" src="https://www.youtube.com/embed/?listType=playlist&list=' . $params['playlist'] . '" frameborder="0" allowfullscreen></iframe>';
+        $vidString.='<iframe width="'.$width.'" height="'. $height .'" src="' . $yt_url . '/embed/?listType=playlist&list=' . $params['playlist'] . '" frameborder="0" allowfullscreen></iframe>';
 
     }else{
 
-        $vidString.='<iframe width="'.$width.'" height="'. $height .'" src="https://www.youtube.com/embed/' . $ytCode .'?rel=0" frameborder="0" allowfullscreen></iframe>';
+        $vidString.='<iframe width="'.$width.'" height="'. $height .'" src="' . $yt_url . '/embed/' . $ytCode .'?rel=0" frameborder="0" allowfullscreen></iframe>';
     }
     
     $vidString.='</div>'; 
@@ -71,7 +77,7 @@ function smarty_cms_about_function_youtube() {
 
 	<p>Change History:</p>
 	<ul>
-		<li>None</li>
+		<li>190710 Defaults to no-cookie domain</li>
 	</ul>
 
 <?php
@@ -91,6 +97,7 @@ function smarty_cms_help_function_youtube() {
         <li><em>height</em> - set a value for the height of your embed iframe if you're not using the responsive layout.</li>
         <li><em>width</em> - set a value for the width of your embed iframe if you're not using the responsive layout.</li>
         <li><em>assign</em> - not sure why you'd want to but you can assign the output to a variable.</li>
+        <li><em>use_cookies</em> - set true if you want to use the normal YouTube domain rather than the no-cookie domain.</li>
 	</ul>
 	<?php
 }
