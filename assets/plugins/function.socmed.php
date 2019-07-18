@@ -64,11 +64,11 @@ function smarty_cms_help_function_socmed() {
     
     </p>
     <p>
-        Most commonly you want to pass the current url of your page and title.<br>
-        You can use cms_self link to get the current url so adding the following tags to your template is a good start: <br><br>
+        Most commonly you'll want to pass the current url of your page and title.<br>
+        You can use the cms_selflink tag to get the current url so adding the following tags to your template is a good start: <br><br>
 
         {cms_selflink href=$page_alias assign=currenturl scope=global}<br>
-        {socmed url=currenturl status= {title} }
+        {socmed url=$currenturl status= {title} }
         
     </p>
 
